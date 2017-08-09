@@ -1,0 +1,6 @@
+.idea
+*.iml
+*.xml
+*.pyc
+__pycache__
+config.py
