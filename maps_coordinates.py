@@ -1,9 +1,10 @@
 # get google maps coordinates
 
 import urllib.parse   # for encode url
-import requests
+import requests       # for get json answer from url
 
 
+# creating request with user address, and return json object
 def get_json_data(address):
     main_api = 'http://maps.googleapis.com/maps/api/geocode/json?'
     url = main_api + urllib.parse.urlencode({'address': address})
@@ -11,6 +12,7 @@ def get_json_data(address):
     return json_data
 
 
+# get string address from json
 def get_formatted_address(address):
     json_data = get_json_data(address)
     try:
@@ -21,6 +23,7 @@ def get_formatted_address(address):
         return str(formatted_address)
 
 
+# get dictionary with coordinates of user address
 def get_coordinates(address):
     json_data = get_json_data(address)
     try:
