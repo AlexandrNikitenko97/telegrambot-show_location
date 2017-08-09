@@ -4,12 +4,22 @@
 import config
 # pyTelegramBotAPI - library
 import telebot
-#
+# import functions to get json data
 from maps_coordinates import get_coordinates, get_formatted_address
 
 
 # creating our bot
 bot = telebot.TeleBot(config.token)
+
+
+@bot.message_handler(commands=['start'])
+def command_start(message):
+    bot.send_message(message.from_user.id, config.start_message(message.from_user.username))
+
+
+@bot.message_handler(commands=['help'])
+def command_start(message):
+    bot.send_message(message.from_user.id, config.help_message)
 
 
 @bot.message_handler(content_types=["text"])
